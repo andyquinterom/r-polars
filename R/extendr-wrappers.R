@@ -102,7 +102,7 @@ import_arrow_ipc <- function(path, n_rows, cache, rechunk, row_name, row_index, 
 
 new_from_ndjson <- function(path, infer_schema_length, batch_size, n_rows, low_memory, rechunk, row_index_name, row_index_offset, ignore_errors) .Call(wrap__new_from_ndjson, path, infer_schema_length, batch_size, n_rows, low_memory, rechunk, row_index_name, row_index_offset, ignore_errors)
 
-new_from_parquet <- function(path, n_rows, cache, parallel, rechunk, row_name, row_index, use_statistics, low_memory, hive_partitioning) .Call(wrap__new_from_parquet, path, n_rows, cache, parallel, rechunk, row_name, row_index, use_statistics, low_memory, hive_partitioning)
+new_from_parquet <- function(path, n_rows, cache, parallel, rechunk, row_name, row_index, storage_options, use_statistics, low_memory, hive_partitioning) .Call(wrap__new_from_parquet, path, n_rows, cache, parallel, rechunk, row_name, row_index, storage_options, use_statistics, low_memory, hive_partitioning)
 
 test_rpolarserr <- function() .Call(wrap__test_rpolarserr)
 
@@ -955,6 +955,12 @@ RPolarsExpr$sub <- function(other) .Call(wrap__RPolarsExpr__sub, self, other)
 RPolarsExpr$div <- function(other) .Call(wrap__RPolarsExpr__div, self, other)
 
 RPolarsExpr$pow <- function(exponent) .Call(wrap__RPolarsExpr__pow, self, exponent)
+
+RPolarsExpr$cut <- function(breaks, labels, left_closed, include_breaks) .Call(wrap__RPolarsExpr__cut, self, breaks, labels, left_closed, include_breaks)
+
+RPolarsExpr$qcut <- function(probs, labels, left_closed, allow_duplicates, include_breaks) .Call(wrap__RPolarsExpr__qcut, self, probs, labels, left_closed, allow_duplicates, include_breaks)
+
+RPolarsExpr$qcut_uniform <- function(n_bins, labels, left_closed, allow_duplicates, include_breaks) .Call(wrap__RPolarsExpr__qcut_uniform, self, n_bins, labels, left_closed, allow_duplicates, include_breaks)
 
 RPolarsExpr$over <- function(partition_by, mapping) .Call(wrap__RPolarsExpr__over, self, partition_by, mapping)
 
